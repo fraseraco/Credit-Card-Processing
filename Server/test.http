@@ -1,0 +1,9 @@
+POST http://localhost:3000/
+Content-Type: application/json
+
+{
+  "creditCardNumber": "1234567890123456",
+  "pin": "1234",
+  "transactionAmount": 100.50,
+  "expirationDate": "2024-12"
+}
