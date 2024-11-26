@@ -1,15 +1,28 @@
-#include "headers.h"
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
 
-int main(int argc, char **argv) {
-    sqlite3 *db;
-    int rc = sqlite3_open("creditCardAccount.db", &db);
-    const char *cardNumberD = "4011 5401 0501 9941";
-    int accountId = 1;
-    const char *pin = "655";
-    const char *expYear = "2025";
-    const char *expMonth = "07";
-    int testPurchaseTotal = 15;
 
+
+char *trim_whitespace(char *str) {
+    char *end;
+
+   
+    while(isspace((unsigned char)*str)) str++;
+
+  
+    if(*str == 0) return str;
+
+     end = str + strlen(str) - 1;
+    while(end > str && isspace((unsigned char)*end)) end--;
+
+    
+    *(end+1) = '\0';
+    return str;
+}
+
+
+int main() {
     char card[256] = ""; 
     char *token;
     char cardNumber[16];
@@ -44,39 +57,51 @@ int main(int argc, char **argv) {
                  }
               cardNumber[strlen(tempNum) - 2] = '\0';
               printf("Card Number: %s\n", cardNumber);
-            }     
+            }
+            
           else if ( flag == 1 ){
-                char temp[100];
-                strcpy(temp, token);
-                strncpy(temp, token, sizeof(temp) - 1);
+
+            char temp[100];
+            strcpy(temp, token);
+         
+             strncpy(temp, token, sizeof(temp) - 1);
                 temp[sizeof(temp) - 1] = '\0';
                 nameString = strtok(temp, "/");  
-                lastName = nameString; 
+            
+            
+             
+              lastName = nameString; 
                 printf("Last Name: %s\n", lastName);
-                nameString = strtok(NULL, "/");
-                nameToken = trim_whitespace(nameString);
+               nameString = strtok(NULL, "/");
+                   nameToken = trim_whitespace(nameString);
            
             for ( int i = 0; i < strlen(nameToken) - 1; i ++){
               
                 if( isspace( nameToken[i] ) ){
                     char *firstToken = strtok( nameToken, " " );
                 
-                    while ( firstToken != NULL ) {
-                        firstName = firstToken;
+                    while ( firstToken != NULL ){
+                       firstName = firstToken;
                         firstToken = strtok(NULL, " ");
-                        middle = firstToken;
-                        firstToken = strtok( NULL, " " );
-                    }
+                        
+                       middle = firstToken;
+
+                    firstToken = strtok( NULL, " " );
+                  
+                      }
                   
                 }
-                else {
+                else{
                   firstName = nameToken;
                   middle = "";
                 }
-            }
-            printf("First Name: %s\n", firstName);
-            printf("Middle Name: %s\n", middle);
-            }
+               
+                
+               }
+                printf("First Name: %s\n", firstName);
+                printf("Middle Name: %s\n", middle);
+                  
+              }
 
        else if ( flag == 2 ){
             year[0] = '2';
@@ -91,17 +116,13 @@ int main(int argc, char **argv) {
             
             printf("Month: %s\n", month);
             printf("Year: %s\n", year);
+
         }
         
          token = strtok_r(NULL, "^", &saveptr);
          flag++;
           
         }
-        returnCode(db, rc);
-    
-        createTables(db);  
-        validateCard(db, testPurchaseTotal, (const char *) cardNumber, (const char *) pin, accountId, (const char *) year, (const char *) month);
-        // validateCard(db, testPurchaseTotal, cardNumberD, pin, accountId, expYear, expMonth);
         }  
     
     else {
@@ -109,21 +130,5 @@ int main(int argc, char **argv) {
     }
 
     return 0;
-}
 
-char *trim_whitespace(char *str) {
-    char *end;
-
-   
-    while(isspace((unsigned char)*str)) str++;
-
-  
-    if(*str == 0) return str;
-
-     end = str + strlen(str) - 1;
-    while(end > str && isspace((unsigned char)*end)) end--;
-
-    
-    *(end+1) = '\0';
-    return str;
 }
