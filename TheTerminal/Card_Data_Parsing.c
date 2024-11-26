@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
-
-
+#include <time.h>
+#include <stdlib.h>
 
 char *trim_whitespace(char *str) {
     char *end;
@@ -35,7 +35,21 @@ int main() {
     char *saveptr;
     char *nameString;
     char *nameToken;
+    
+    int cardYear = 0;
+    int cardMonth = 0;
+    int currentYear; 
+    int currentMonth;
+    struct tm* ptr;
+    time_t t;
+    t = time(NULL);
+    ptr = localtime(&t);
+    //print for debugging
+    printf("%s", asctime(ptr));
 
+    currentYear = ptr->tm_year + 1900;
+    currentMonth = ptr->tm_mon + 1;
+    
     printf("Please swipe your card:\n");
 
     
@@ -45,7 +59,7 @@ int main() {
         token = strtok_r(card, "^",&saveptr);
         
         while( token != NULL ){
-           // printf("%s\n", token);
+           
             
           if ( flag == 0 ) {
             char *tempNum = token;
@@ -71,6 +85,7 @@ int main() {
             
              
               lastName = nameString; 
+                //print for debugging
                 printf("Last Name: %s\n", lastName);
                nameString = strtok(NULL, "/");
                    nameToken = trim_whitespace(nameString);
@@ -98,6 +113,7 @@ int main() {
                
                 
                }
+                //print for debugging
                 printf("First Name: %s\n", firstName);
                 printf("Middle Name: %s\n", middle);
                   
@@ -114,10 +130,14 @@ int main() {
             month[1] = token[3];
             month[2] = '\0';
             
-            printf("Month: %s\n", month);
-            printf("Year: %s\n", year);
+            cardYear = atoi(year);
+            cardMonth = atoi(month);
 
-        }
+            
+            printf("Month: %d\n", cardMonth);
+            printf("Year: %d\n", cardYear);
+
+            }
         
          token = strtok_r(NULL, "^", &saveptr);
          flag++;
@@ -128,6 +148,18 @@ int main() {
     else {
         printf("Failed to read card data.\n");
     }
+
+    if ( cardYear < currentYear ){
+
+      printf("Card is expired, please present different form of payment\n");
+    }
+    else if( cardYear == currentYear && cardMonth < currentMonth ){
+      printf("Card is expired, please present different form of payment\n");
+     }
+    else{
+      printf("Processing...\n");
+    }
+    
 
     return 0;
 
