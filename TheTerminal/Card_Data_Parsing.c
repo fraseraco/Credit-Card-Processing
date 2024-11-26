@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+#include <curl/curl.h>
 
 
 
@@ -131,4 +132,8 @@ int main() {
 
     return 0;
 
+}
+
+void initializeCurl (){
+  
 }
