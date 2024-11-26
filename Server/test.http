@@ -2,8 +2,9 @@ POST http://localhost:3000/
 Content-Type: application/json
 
 {
-  "creditCardNumber": "1234567890123456",
-  "pin": "1234",
-  "transactionAmount": 100.50,
-  "expirationDate": "2024-12"
+  "creditCardNumber": "4242 4242 4242 4242",
+  "pin": "756",
+  "transactionAmount": 5.0,
+  "expirationMonth": "03",
+  "expirationYear": "2025"
 }

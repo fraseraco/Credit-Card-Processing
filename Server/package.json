@@ -1,17 +1,18 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "type": "commonjs",
+  "type": "module",
   "description": "Make sure you have node.js installed. You can run `node -v` to test if node is installed. ## Install dependencies cd into the Server directory and run: ```bash npm install ``` ## Start the server ```bash node app.js ```",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.21.1",
+    "nodemon": "^3.1.7",
     "sqlite3": "^5.1.7"
   }
 }
