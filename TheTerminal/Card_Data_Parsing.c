@@ -2,7 +2,7 @@
 #include <string.h>
 #include <ctype.h>
 
-void Curl (char cardNumber[17], char month[3], char year[5], char pin[5], int transaction);
+void Curl (char cardNumber[17], char month[3], char year[5], char pin[5], double transaction);
 
 char *trim_whitespace(char *str) {
     char *end;
@@ -133,7 +133,7 @@ int main() {
 
 }
 
-void Curl (char cardNumber[17], char month[3], char year[5], char pin[5], int transaction) {
+void Curl (char cardNumber[17], char month[3], char year[5], char pin[5], double transaction) {
     CURL *curl;
     CURLcode res;
     char *postData = malloc(sizeof(char) * 1024);
@@ -148,13 +148,12 @@ void Curl (char cardNumber[17], char month[3], char year[5], char pin[5], int tr
         sprintf(postData,
             "{\"creditCardNumber\": \"%s\","
             "\"pin\": \"%s\","
-            "\"transactionAmount\": %d,"
+            "\"transactionAmount\": %.2f,"
             "\"expirationMonth\": \"%s\","
             "\"expirationYear\": \"%s\""
             "}"
         ,cardNumber, pin, transaction, month, year);
 
-        printf("%s", postData);
         // Set the POST data
         curl_easy_setopt(curl, CURLOPT_POSTFIELDS, postData);
 
