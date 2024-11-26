@@ -2,6 +2,8 @@
 #include <string.h>
 #include <ctype.h>
 #include <curl/curl.h>
+//curl proto
+void curl(char cardNumber[16], char month[3], char year[5], int pin, int transaction);
 
 
 
@@ -36,6 +38,8 @@ int main() {
     char *saveptr;
     char *nameString;
     char *nameToken;
+    int pin=0;
+    int transaction=0;
 
     printf("Please swipe your card:\n");
 
@@ -134,6 +138,48 @@ int main() {
 
 }
 
-void initializeCurl (){
-  
+void Curl (char cardNumber[16], char month[3], char year[5], int pin, int transaction){
+    CURL *curl;
+    CURLcode res;
+    char *postData;
+
+    // Initialize curl
+    curl = curl_easy_init();
+    if (curl) {
+        // Set the URL
+        curl_easy_setopt(curl, CURLOPT_URL, "http://localhost:3000/");
+
+        // Specify the POST data
+        sprintf(postData,
+            "\"creditCardNumber\": \"%s\","
+            "\"pin\": \"%d\","
+            "\"transactionAmount\": %d,"
+            "\"expirationMonth\": \"%s\","
+            "\"expirationYear\": \"%s\""
+            "}"
+        ,cardNumber, month, year, pin, transaction);
+        // Set the POST data
+        curl_easy_setopt(curl, CURLOPT_POSTFIELDS, postData);
+
+        // Set the Content-Type header
+        struct curl_slist *headers = NULL;
+        headers = curl_slist_append(headers, "Content-Type: application/json");
+        curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
+
+        // Perform the request
+        res = curl_easy_perform(curl);
+
+        // Check for errors
+        if (res != CURLE_OK) {
+            fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(res));
+        }
+
+        // Clean up
+        curl_slist_free_all(headers); // free the list of headers
+        curl_easy_cleanup(curl);      // clean up curl
+    } else {
+        fprint("Failed to initialize curl\n");
+    }
+
+
 }
