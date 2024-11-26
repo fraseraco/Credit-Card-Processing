@@ -23,6 +23,7 @@ char *trim_whitespace(char *str) {
 
 
 int main() {
+  
     char card[256] = ""; 
     char *token;
     char cardNumber[16];
