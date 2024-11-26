@@ -3,28 +3,10 @@
 #include <ctype.h>
 #include <time.h>
 #include <stdlib.h>
-
-char *trim_whitespace(char *str) {
-    char *end;
-
-   
-    while(isspace((unsigned char)*str)) str++;
-
-  
-    if(*str == 0) return str;
-
-     end = str + strlen(str) - 1;
-    while(end > str && isspace((unsigned char)*end)) end--;
-
-    
-    *(end+1) = '\0';
-    return str;
-}
-
-
-int main() {
-  
-    char card[256] = ""; 
+#include "Header.h"
+CardInfo Card_Data_Parsing() {
+    CardInfo cardInfo = malloc(sizeof(Card));
+    char card[256] = "";
     char *token;
     char cardNumber[16];
     char month[3] = "";
@@ -45,7 +27,7 @@ int main() {
     time_t t;
     t = time(NULL);
     ptr = localtime(&t);
-    //print for debugging
+    //print for debuggingCardInfo cardInfo;
     printf("%s", asctime(ptr));
 
     currentYear = ptr->tm_year + 1900;
@@ -72,6 +54,7 @@ int main() {
                  }
               cardNumber[strlen(tempNum) - 2] = '\0';
               printf("Card Number: %s\n", cardNumber);
+              cardInfo->cardNumber = cardNumber;
             }
             
           else if ( flag == 1 ){
@@ -87,6 +70,7 @@ int main() {
              
               lastName = nameString; 
                 //print for debugging
+                cardInfo->lastName = lastName;
                 printf("Last Name: %s\n", lastName);
                nameString = strtok(NULL, "/");
                    nameToken = trim_whitespace(nameString);
@@ -114,6 +98,8 @@ int main() {
                
                 
                }
+               cardInfo->firstName = firstName;
+               cardInfo->middle = middle;
                 //print for debugging
                 printf("First Name: %s\n", firstName);
                 printf("Middle Name: %s\n", middle);
@@ -133,7 +119,8 @@ int main() {
             
             cardYear = atoi(year);
             cardMonth = atoi(month);
-
+            cardInfo->cardYear = cardYear;
+            cardInfo->cardMonth = cardMonth;
             
             printf("Month: %d\n", cardMonth);
             printf("Year: %d\n", cardYear);
@@ -151,7 +138,6 @@ int main() {
     }
 
     if ( cardYear < currentYear ){
-
       printf("Card is expired, please present different form of payment\n");
     }
     else if( cardYear == currentYear && cardMonth < currentMonth ){
@@ -162,6 +148,8 @@ int main() {
     }
     
 
-    return 0;
+
+  
+  return cardInfo;
 
 }
