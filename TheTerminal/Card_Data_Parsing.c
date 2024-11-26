@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+#include <curl/curl.h>
+#include <stdlib.h>
 
 void Curl (char cardNumber[17], char month[3], char year[5], char pin[5], double transaction);
 
