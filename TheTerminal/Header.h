@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <lcd1602.h>
 
 
 
@@ -26,6 +27,7 @@ void DisplayMenu(char*);
 /* * * * RawCard.c * * * */
 int getReadMode();
 CardInfo getMagData();
+CardInfo getRFIDData();
 
 /* * * * ParseCard.c * * * */
 

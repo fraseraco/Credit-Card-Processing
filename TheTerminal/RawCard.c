@@ -1,3 +1,4 @@
+#include "Header.h"
 // Get read mode (using stdin)
 // 0 - Magstripe
 // 1 - Tap to Pay
@@ -7,4 +8,16 @@ int getReadMode(){
     printf("Enter reader mode: ");
     scanf("%d", &in);
     return in;
+}
+
+CardInfo getMagData()
+{
+    CardInfo CC = NULL;
+    return CC;
+}
+
+CardInfo getRFIDData()
+{
+    CardInfo CC = NULL;
+    return CC;
 }

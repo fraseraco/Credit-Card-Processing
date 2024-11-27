@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
-<<<<<<< HEAD
 #include <curl/curl.h>
 #include <stdlib.h>
 
@@ -27,15 +26,6 @@ char *trim_whitespace(char *str) {
 
 int main() {
     char card[256] = ""; 
-=======
-#include <time.h>
-#include <stdlib.h>
-#include "Header.h"
-
-CardInfo Card_Data_Parsing() {
-    CardInfo cardInfo = malloc(sizeof(Card));
-    char card[256] = "";
->>>>>>> Steven
     char *token;
     char cardNumber[16];
     char month[3] = "";
@@ -177,7 +167,6 @@ CardInfo Card_Data_Parsing() {
     }
     
 
-<<<<<<< HEAD
 }
 
 void Curl (char cardNumber[17], char month[3], char year[5], char pin[5], double transaction) {
@@ -226,10 +215,3 @@ void Curl (char cardNumber[17], char month[3], char year[5], char pin[5], double
     }
 }
 
-=======
-
-  
-  return cardInfo;
-
-}
->>>>>>> Steven

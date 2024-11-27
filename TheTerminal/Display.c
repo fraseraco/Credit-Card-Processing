@@ -3,6 +3,7 @@
 #include <lcd1602.h>
 #include <unistd.h>     // posix standards
 #include <stdint.h>
+#include "Header.h"
 
 
 void DisplayMenu(char * str) {

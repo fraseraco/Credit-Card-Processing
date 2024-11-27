@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <Header.h>
+#include "Header.h"
+#include <lcd1602.h>
 
 #define TESTING true
 #ifndef TESTING
@@ -15,14 +16,11 @@
 
 int main(){
 
-    int ReadMode, rc;
+    int ReadMode;
     CardInfo CC;
 
-    rc = lcd1602Init(1, 0x27);
-    if (!rc) { printf("Error Initializing LCD\n\n"); return 0; }
+    if (lcd1602Init(1, 0x27)) { printf("Error Initializing LCD\n\n"); return 0; }
     DisplayMenu("0. Swipe Card \t1. Tap to pay \t2. Test \t9. Dev\n");
-    
-    lcd1602Shutdown();
     return 0;
     
     switch ( READMODE ) {
@@ -46,14 +44,14 @@ int main(){
     // SERVER_API();
     
 
-    if(/*send stuff to server and is valid data*/){
+    if(1/*send stuff to server and is valid data*/){
         printf("Payment Accepted\n");        
     }
-    else if(/*send stuff to server and has insufficient funds*/){
+    else if(0/*send stuff to server and has insufficient funds*/){
         printf("Transaction Declined...\nInsufficient Funds\n");
 
     }
-    else if(/*send stuff to server and card info is incorrect*/){
+    else if(0/*send stuff to server and card info is incorrect*/){
         printf("Transaction Declined...\n");
 
     }
