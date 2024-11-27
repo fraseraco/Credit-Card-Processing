@@ -8,6 +8,7 @@
 #ifndef TESTING
 #define READMODE ReadMode = getReadMode()
 #else
+#define TESTMODE LCD		// Allows testing of LCD
 #define READMODE 9
 #endif
 #define printerr printf
@@ -17,34 +18,34 @@
 int main(){
 
 	int ReadMode;
-	CardInfo CC;
+	Card CC_test = {"123455556666", "2000", "01", "Bob", "L", "Oblaw"};
+	CardInfo ccInfo;
 
 	if (lcd1602Init(1, 0x27)) { printf("Error Initializing LCD\n\n"); return 0; }
 	DisplayMenu("0. Swipe Card \t1. Tap to pay \t2. Test \t9. Dev\n");
-	printf("Press any key to continue: ");
+	
+	printf("Testing LCD Display.\nPress Enter to continue: ");
 	getchar();
-	lcd1602SetCursor(0,0);
-	lcd1602WriteString("Goodbye...");
-	sleep(2);
-	Cleanup();
-	return 0;
 	
 	switch ( READMODE ) {
 		case -1: 
 			printerr("Error");
 			return 1;
 		case 0: // Swipe option
-			CC = getMagData();
+			ccInfo = getMagData();
 			break;
 		case 1: // Tap option
-			CC = getRFIDData();
+			ccInfo = getRFIDData();
 			break;
 		case 9: // Test/Dev option
-			
 			break;
 		default:
 		printf("Something has gone horribly wrong");
 	}
+
+	// dump CC info to LCD
+	CCDump(CC_test);
+	
 
 	// Parse to JSON - Connor's Function
 	// SERVER_API();
@@ -63,6 +64,11 @@ int main(){
 	}
 
 
+	lcd1602Clear();
+	lcd1602SetCursor(0,0);
+	lcd1602WriteString("Goodbye...");
+	sleep(2);
 
+	Cleanup();
 	return 0;
 }

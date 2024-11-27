@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS= -Wall -O0 -g
+CFLAGS= -O0 -g #-Wall 
 LIBS = -lm -llcd1602 -lpthread
 
 Terminal: main.o Header.h Display.o Utility.o#Card_Data_Parsing.o 

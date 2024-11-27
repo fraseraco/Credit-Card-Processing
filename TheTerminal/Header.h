@@ -1,16 +1,17 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <ctype.h>
+#include <unistd.h>     // posix standards
+#include <stdint.h>
 #include <lcd1602.h>
-
-
 
 /* * * * Card Data * * * */
 
 typedef struct Card {
     char *cardNumber;
-    int *cardYear;
-    int *cardMonth;
+    char *cardYear;
+    char *cardMonth;
     char *firstName;
     char *middle;
     char *lastName;
@@ -23,6 +24,8 @@ CardInfo Card_Data_Parsing();
 
 /* * * * Display.c * * * */
 void DisplayMenu(char*);
+void CCDump_Name(Card);
+void CCDump(Card);
 
 /* * * * RawCard.c * * * */
 int getReadMode();
