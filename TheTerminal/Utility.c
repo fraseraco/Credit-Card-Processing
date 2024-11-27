@@ -1,3 +1,4 @@
+#include "Header.h"
 char *trim_whitespace(char *str) {
     char *end;
 
@@ -13,4 +14,10 @@ char *trim_whitespace(char *str) {
     
     *(end+1) = '\0';
     return str;
+}
+int Cleanup()
+{
+    // Properly Shutdown LCD Display
+    lcd1602Shutdown();
+    return 0;
 }

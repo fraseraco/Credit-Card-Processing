@@ -4,6 +4,7 @@
 #include <time.h>
 #include <stdlib.h>
 #include "Header.h"
+
 CardInfo Card_Data_Parsing() {
     CardInfo cardInfo = malloc(sizeof(Card));
     char card[256] = "";
