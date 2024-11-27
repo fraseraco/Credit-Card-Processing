@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+<<<<<<< HEAD
 #include <curl/curl.h>
 #include <stdlib.h>
 
@@ -26,6 +27,15 @@ char *trim_whitespace(char *str) {
 
 int main() {
     char card[256] = ""; 
+=======
+#include <time.h>
+#include <stdlib.h>
+#include "Header.h"
+
+CardInfo Card_Data_Parsing() {
+    CardInfo cardInfo = malloc(sizeof(Card));
+    char card[256] = "";
+>>>>>>> Steven
     char *token;
     char cardNumber[16];
     char month[3] = "";
@@ -37,7 +47,21 @@ int main() {
     char *saveptr;
     char *nameString;
     char *nameToken;
+    
+    int cardYear = 0;
+    int cardMonth = 0;
+    int currentYear; 
+    int currentMonth;
+    struct tm* ptr;
+    time_t t;
+    t = time(NULL);
+    ptr = localtime(&t);
+    //print for debuggingCardInfo cardInfo;
+    printf("%s", asctime(ptr));
 
+    currentYear = ptr->tm_year + 1900;
+    currentMonth = ptr->tm_mon + 1;
+    
     printf("Please swipe your card:\n");
 
     
@@ -47,7 +71,7 @@ int main() {
         token = strtok_r(card, "^",&saveptr);
         
         while( token != NULL ){
-           // printf("%s\n", token);
+           
             
           if ( flag == 0 ) {
             char *tempNum = token;
@@ -59,6 +83,7 @@ int main() {
                  }
               cardNumber[strlen(tempNum) - 2] = '\0';
               printf("Card Number: %s\n", cardNumber);
+              cardInfo->cardNumber = cardNumber;
             }
             
           else if ( flag == 1 ){
@@ -73,6 +98,8 @@ int main() {
             
              
               lastName = nameString; 
+                //print for debugging
+                cardInfo->lastName = lastName;
                 printf("Last Name: %s\n", lastName);
                nameString = strtok(NULL, "/");
                    nameToken = trim_whitespace(nameString);
@@ -100,6 +127,9 @@ int main() {
                
                 
                }
+               cardInfo->firstName = firstName;
+               cardInfo->middle = middle;
+                //print for debugging
                 printf("First Name: %s\n", firstName);
                 printf("Middle Name: %s\n", middle);
                   
@@ -116,10 +146,15 @@ int main() {
             month[1] = token[3];
             month[2] = '\0';
             
-            printf("Month: %s\n", month);
-            printf("Year: %s\n", year);
+            cardYear = atoi(year);
+            cardMonth = atoi(month);
+            cardInfo->cardYear = cardYear;
+            cardInfo->cardMonth = cardMonth;
+            
+            printf("Month: %d\n", cardMonth);
+            printf("Year: %d\n", cardYear);
 
-        }
+            }
         
          token = strtok_r(NULL, "^", &saveptr);
          flag++;
@@ -131,8 +166,18 @@ int main() {
         printf("Failed to read card data.\n");
     }
 
-    return 0;
+    if ( cardYear < currentYear ){
+      printf("Card is expired, please present different form of payment\n");
+    }
+    else if( cardYear == currentYear && cardMonth < currentMonth ){
+      printf("Card is expired, please present different form of payment\n");
+     }
+    else{
+      printf("Processing...\n");
+    }
+    
 
+<<<<<<< HEAD
 }
 
 void Curl (char cardNumber[17], char month[3], char year[5], char pin[5], double transaction) {
@@ -181,3 +226,10 @@ void Curl (char cardNumber[17], char month[3], char year[5], char pin[5], double
     }
 }
 
+=======
+
+  
+  return cardInfo;
+
+}
+>>>>>>> Steven
