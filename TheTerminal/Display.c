@@ -6,6 +6,7 @@
 #include "Header.h"
 
 
+
 void DisplayMenu(char * str) {
     lcd1602WriteString("Select Mode");
     lcd1602SetCursor(0,1);
