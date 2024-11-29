@@ -10,6 +10,8 @@
 #else
 #define TESTMODE LCD		// Allows testing of LCD
 #define READMODE 9
+#define DisplayMenu printf
+#define CCDump CCDump_DEBUG
 #endif
 #define printerr printf
 #define log printf
@@ -17,8 +19,8 @@
 
 int main(){
 
-	int ReadMode;
-	Card CC_test = {"123455556666", "2000", "01", "Bob", "L", "Oblaw"};
+	int ReadMode, pin = 0000;
+	Card CC_test = {"1234555566667788", "2000", "01", "Bob", "L", "Oblaw"};
 	CardInfo ccInfo;
 
 	if (lcd1602Init(1, 0x27)) { printf("Error Initializing LCD\n\n"); return 0; }
@@ -38,17 +40,23 @@ int main(){
 			ccInfo = getRFIDData();
 			break;
 		case 9: // Test/Dev option
+			ccInfo = &CC_test;
+			pin = 1234;
 			break;
 		default:
 		printf("Something has gone horribly wrong");
 	}
 
-	// dump CC info to LCD
-	CCDump(CC_test);
+	// Get pin
+	// Perform local validations - expiration, checksum
 	
+
+	// dump CC info to LCD
+	CCDump(ccInfo);
 
 	// Parse to JSON - Connor's Function
 	// SERVER_API();
+	// Process response
 	
 
 	if(1/*send stuff to server and is valid data*/){
@@ -63,12 +71,7 @@ int main(){
 
 	}
 
-
-	lcd1602Clear();
-	lcd1602SetCursor(0,0);
-	lcd1602WriteString("Goodbye...");
-	sleep(2);
-
+	DisplayGoodbye();
 	Cleanup();
 	return 0;
 }

@@ -24,8 +24,10 @@ CardInfo Card_Data_Parsing();
 
 /* * * * Display.c * * * */
 void DisplayMenu(char*);
+void DisplayGoodbye();
 void CCDump_Name(Card);
-void CCDump(Card);
+void CCDump(CardInfo);
+void CCDump_DEBUG(CardInfo);
 
 /* * * * RawCard.c * * * */
 int getReadMode();
