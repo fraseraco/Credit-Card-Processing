@@ -1,4 +1,5 @@
 #include "Header.h"
+
 char *trim_whitespace(char *str) {
     char *end;
 
