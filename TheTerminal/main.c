@@ -20,7 +20,7 @@
 int main(){
 
 	int ReadMode, pin = 0000;
-	Card CC_test = {"1234555566667788", "2000", "01", "Bob", "L", "Oblaw"};
+	Card CC_test = {"4242424242424242", "2025", "03", "Bob", "L", "Oblaw"};
 	CardInfo ccInfo;
 
 	if (lcd1602Init(1, 0x27)) { printf("Error Initializing LCD\n\n"); return 0; }
@@ -41,7 +41,7 @@ int main(){
 			break;
 		case 9: // Test/Dev option
 			ccInfo = &CC_test;
-			pin = 1234;
+			pin = 756;
 			break;
 		default:
 		printf("Something has gone horribly wrong");
@@ -59,24 +59,19 @@ int main(){
 	// Process response
 	char pinString[5];
 	sprintf(pinString, "%d", pin);
-	CURLcode res = Curl(ccInfo->cardNumber, ccInfo->cardMonth, ccInfo->cardYear, pinString, 5.5);
+	char* res = Curl(ccInfo->cardNumber, ccInfo->cardMonth, ccInfo->cardYear, pinString, 5.5);
 
-	if (res != CURLE_OK) {
-		fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(res));
+	if (res == NULL) {
+		printf("ERROR: server response NULL");
 	}
 
-
-	if(1/*send stuff to server and is valid data*/){
-		printf("Payment Accepted\n");        
+	if (strstr(res, "Approved")) {
+		printf("Transaction Approved\n");
 	}
-	else if(0/*send stuff to server and has insufficient funds*/){
-		printf("Transaction Declined...\nInsufficient Funds\n");
-
+	else {
+		printf("Transaction Declined\n");
 	}
-	else if(0/*send stuff to server and card info is incorrect*/){
-		printf("Transaction Declined...\n");
 
-	}
 
 	DisplayGoodbye();
 	Cleanup();
