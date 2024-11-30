@@ -57,7 +57,14 @@ int main(){
 	// Parse to JSON - Connor's Function
 	// SERVER_API();
 	// Process response
-	
+	char pinString[5];
+	sprintf(pinString, "%d", pin);
+	CURLcode res = Curl(ccInfo->cardNumber, ccInfo->cardMonth, ccInfo->cardYear, pinString, 5.5);
+
+	if (res != CURLE_OK) {
+		fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(res));
+	}
+
 
 	if(1/*send stuff to server and is valid data*/){
 		printf("Payment Accepted\n");        
