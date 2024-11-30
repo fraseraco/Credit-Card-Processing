@@ -40,3 +40,6 @@ CardInfo getRFIDData();
 /* * * * Utility.c * * * */
 char *trim_whitespace(char *str);
 int Cleanup();
+
+/* Server request */
+void Curl (char cardNumber[17], char month[3], char year[5], char pin[5], double transaction);
