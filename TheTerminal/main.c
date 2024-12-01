@@ -78,6 +78,7 @@ int main(){
 
 	if (strstr(res, "Approved")) {
 		printf("Transaction Approved\n");
+		DisplayApproved();
 	}
 	else {
 		printf("Transaction Declined\n");

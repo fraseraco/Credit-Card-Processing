@@ -48,6 +48,22 @@ void PromptPin(){
 	lcd1602WriteString("Enter PIN:");
 }
 
+void DisplayApproved(){
+	lcd1602Clear();
+	lcd1602SetCursor(0,0);
+	lcd1602WriteString("Approved!");
+	sleep(2);
+}
+
+void DisplayApproved(){
+	lcd1602Clear();
+	lcd1602SetCursor(0,0);
+	lcd1602WriteString("Declined...");
+	lcd1602SetCursor(0,1);
+	lcd1602WriteString("...broke ass");
+	sleep(2);
+}
+
 void DisplayGoodbye(){
 	lcd1602Clear();
 	lcd1602SetCursor(0,0);
