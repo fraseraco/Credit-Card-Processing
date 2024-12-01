@@ -70,6 +70,15 @@ void DisplayApproved(){
 	sleep(2);
 }
 
+void DisplayInvalidPin(){
+	lcd1602Clear();
+	lcd1602SetCursor(0,0);
+	lcd1602WriteString("Invalid Pin");
+	lcd1602SetCursor(0,1);
+	lcd1602WriteString("Try again");
+	sleep(2);
+}
+
 void DisplayDeclined(){
 	lcd1602Clear();
 	lcd1602SetCursor(0,0);

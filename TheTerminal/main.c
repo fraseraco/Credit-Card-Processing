@@ -80,11 +80,18 @@ int main(){
 		printf("Transaction Approved\n");
 		DisplayApproved();
 	}
-	else {
+	else if (strstr(res, "Pin")) {
+		printf("Invalid pin\n");
+		DisplayInvalidPin();
+		PromptPin();
+		pin = getPin();
+		DisplayProcessing();
+		sprintf(pinString, "%d", pin);
+		char* res = Curl(ccInfo->cardNumber, ccInfo->cardMonth, ccInfo->cardYear, pinString, transactionAmount);
+	} else {
 		printf("Transaction Declined\n");
 		DisplayDeclined();
 	}
-	
 
 	DisplayGoodbye();
 	Cleanup();
