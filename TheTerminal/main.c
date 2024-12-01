@@ -23,13 +23,15 @@ int main(){
 	double transactionAmount = 0.0;
 	Card CC_test = {"4242424242424242", "2025", "03", "Bob", "L", "Oblaw"};
 	CardInfo ccInfo;
-
+	if (lcd1602Init(1, 0x27)) { printf("Error Initializing LCD\n\n"); return 0; }
+	
+	PromptAmount();
 	transactionAmount = getAmount();
 
 	DisplayAmount(transactionAmount);
 
 
-	if (lcd1602Init(1, 0x27)) { printf("Error Initializing LCD\n\n"); return 0; }
+	
 	DisplayMenu("0. Swipe Card \t1. Tap to pay \t2. Test \t9. Dev\n");
 	
 	printf("Testing LCD Display.\nPress Enter to continue: ");
