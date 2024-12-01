@@ -58,17 +58,16 @@ void DisplayProcessing() {
 	lcd1602Clear();
 	lcd1602SetCursor(0,0);
 	lcd1602WriteString("Processing...");
-	sleep(2);
+	sleep(1);
 	lcd1602SetCursor(0,1);
 	lcd1602WriteString("...");
-	sleep(1);
 }
 
 void DisplayApproved(){
 	lcd1602Clear();
 	lcd1602SetCursor(0,0);
 	lcd1602WriteString("Approved!");
-	//sleep(2);
+	sleep(2);
 }
 
 void DisplayInvalidPin(){
@@ -77,7 +76,7 @@ void DisplayInvalidPin(){
 	lcd1602WriteString("Invalid Pin");
 	lcd1602SetCursor(0,1);
 	lcd1602WriteString("Try again");
-	//sleep(2);
+	sleep(1);
 }
 
 void DisplayDeclined(){
@@ -93,7 +92,7 @@ void DisplayGoodbye(){
 	lcd1602Clear();
 	lcd1602SetCursor(0,0);
 	lcd1602WriteString("Goodbye...");
-	//sleep(2);
+	sleep(5);
 }
 
 void CCDump_Name(Card CC){
