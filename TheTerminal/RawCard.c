@@ -156,12 +156,18 @@ CardInfo getMagData() {
 CardInfo CreateCardInfo(char* number, char* year, char* month, char* fName, char* mid, char* lName) {
     CardInfo cardInfo = malloc(sizeof(Card));
     cardInfo->cardNumber = malloc(sizeof(char) * ( strlen(number) + 1));
-    cardInfo->cardYear = malloc(sizeof(char) * 5);
+	cardInfo->cardYear = malloc(sizeof(char) * 5);
     cardInfo->cardMonth = malloc(sizeof(char) * 3);
     cardInfo->firstName = malloc(sizeof(char) * (strlen(fName) +1));
     cardInfo->middle = malloc(sizeof(char) * (strlen(mid)+1));
     cardInfo->lastName = malloc(sizeof(char) * (strlen(lName)+1));
     
+	strcpy(cardInfo->cardNumber, number);
+	strcpy(cardInfo->cardYear, year);
+	strcpy(cardInfo->cardMonth, month);
+	strcpy(cardInfo->firstName, fName);
+	strcpy(cardInfo->middle, mid);
+	strcpy(cardInfo->lastName, lName);
     return cardInfo;
 }
 
