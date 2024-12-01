@@ -24,6 +24,7 @@ typedef Card* CardInfo;
 CardInfo Card_Data_Parsing();
 
 /* * * * Display.c * * * */
+void DisplayWelcome();
 void DisplayMenu(char*);
 void PromptAmount();
 void DisplayAmount(double);
@@ -32,6 +33,7 @@ void PromptPin();
 void DisplayProcessing();
 void DisplayApproved();
 void DisplayDeclined();
+void DisplayInvalidPin();
 void DisplayGoodbye();
 void CCDump_Name(Card);
 void CCDump(CardInfo);
