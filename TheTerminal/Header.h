@@ -39,6 +39,8 @@ CardInfo getRFIDData();
 
 
 /* * * * Utility.c * * * */
+int getAmount();
+int getPin();
 char *trim_whitespace(char *str);
 int Cleanup();
 
