@@ -12,15 +12,15 @@ void DisplayMenu(char * str) {
 		lcd1602WriteString("Select Mode");
 		lcd1602SetCursor(0,1); // (ch pos, row pos) starting at 0,0 for first printable space
 		lcd1602WriteString("0 Swipe | 1 Tap");
-		lcd1602Control(1,0,1);  // (backlight, underline, blink block)
+		lcd1602Control(1,0,0);  // (backlight, underline, blink block)
 }
 
 void PromptAmount() {
 		lcd1602Clear();
-		lcd1602WriteString("Enter transaction");
+		lcd1602WriteString("Enter");
 		lcd1602SetCursor(0,1); // (ch pos, row pos) starting at 0,0 for first printable space
 		lcd1602WriteString("amount: ");
-		lcd1602Control(1,0,1);  // (backlight, underline, blink block)
+		lcd1602Control(1,0,0);  // (backlight, underline, blink block)
 }
 
 void DisplayAmount(int amt) {
@@ -31,7 +31,7 @@ void DisplayAmount(int amt) {
 	lcd1602WriteString("Amount Correct?");
 	lcd1602SetCursor(0,1); // (ch pos, row pos) starting at 0,0 for first printable space
 	lcd1602WriteString(buff);
-	lcd1602Control(1,0,1);  // (backlight, underline, blink block)
+	lcd1602Control(1,0,0);  // (backlight, underline, blink block)
 }
 
 void DisplayGoodbye(){
