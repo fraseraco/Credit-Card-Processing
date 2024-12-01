@@ -2,8 +2,8 @@ CC=gcc
 CFLAGS= -O0 -g #-Wall 
 LIBS = -lm -llcd1602 -lpthread
 
-Terminal: main.o Header.h Display.o Utility.o ServerRequest.o #Card_Data_Parsing.o
-	$(CC) -o Terminal $(CFLAGS) main.o $(LIBS) Header.h Display.o Utility.o ServerRequest.o -lcurl #Card_Data_Parsing.o
+Terminal: main.o Header.h Display.o Utility.o ServerRequest.o RawCard.o #Card_Data_Parsing.o
+	$(CC) -o Terminal $(CFLAGS) main.o $(LIBS) Header.h Display.o Utility.o ServerRequest.o RawCard.o -lcurl #Card_Data_Parsing.o
 
 main.o:	main.c Header.h 
 	$(CC) -c $(CFLAGS) main.c 
