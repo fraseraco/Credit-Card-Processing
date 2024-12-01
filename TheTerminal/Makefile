@@ -17,6 +17,9 @@ Utility.o: Utility.c Header.h
 ServerRequest.o: ServerRequest.c
 	gcc -c $(CLFAGS) ServerRequest.c -lcurl
 
+RawCard.o: RawCard.c Header.h
+	gcc -c $(CFLAGS) RawCard.c
+
 # Card_Data_Parsing.o: Card_Data_Parsing.c headers.h
 # 	gcc -c $(CFLAGS) Card_Data_Parsing.c
 
