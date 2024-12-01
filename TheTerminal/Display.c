@@ -62,18 +62,13 @@ void DisplayProcessing() {
 	lcd1602SetCursor(0,1);
 	lcd1602WriteString("...");
 	sleep(1);
-	lcd1602SetCursor(5,1);
-	lcd1602WriteString("...");
-	sleep(1);
-	lcd1602SetCursor(10,1);
-	lcd1602WriteString("...");
 }
 
 void DisplayApproved(){
 	lcd1602Clear();
 	lcd1602SetCursor(0,0);
 	lcd1602WriteString("Approved!");
-	sleep(2);
+	//sleep(2);
 }
 
 void DisplayInvalidPin(){
@@ -82,7 +77,7 @@ void DisplayInvalidPin(){
 	lcd1602WriteString("Invalid Pin");
 	lcd1602SetCursor(0,1);
 	lcd1602WriteString("Try again");
-	sleep(2);
+	//sleep(2);
 }
 
 void DisplayDeclined(){
@@ -91,14 +86,14 @@ void DisplayDeclined(){
 	lcd1602WriteString("Declined...");
 	lcd1602SetCursor(0,1);
 	lcd1602WriteString("...broke ass");
-	sleep(2);
+	//sleep(2);
 }
 
 void DisplayGoodbye(){
 	lcd1602Clear();
 	lcd1602SetCursor(0,0);
 	lcd1602WriteString("Goodbye...");
-	sleep(2);
+	//sleep(2);
 }
 
 void CCDump_Name(Card CC){
@@ -111,7 +106,7 @@ void CCDump_Name(Card CC){
 		strcat(buff, CC.lastName);
 		lcd1602SetCursor(0,1); // (ch pos, row pos) starting at 0,0 for first printable space
 		lcd1602WriteString(buff);
-		sleep(1.5);
+		//sleep(1.5);
 		return;
 }
 
@@ -132,7 +127,7 @@ void CCDump(CardInfo CC){
 		lcd1602WriteString("Card Number");
 		lcd1602SetCursor(0,1);
 		lcd1602WriteString(CC->cardNumber);
-		sleep(1);
+		//sleep(1);
 		return;
 }
 
@@ -144,9 +139,9 @@ void CCDump_DEBUG(CardInfo CC){
 		strcpy(buff, "L:");
 		strcat(buff, CC->lastName);
 		printf("%s\n", buff);
-		sleep(2);
+		//sleep(2);
 		printf("Card Number\n");
 		printf("%s\n", CC->cardNumber);
-		sleep(2);
+		//sleep(2);
 		return;
 }
