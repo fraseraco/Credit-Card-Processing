@@ -29,6 +29,7 @@ void PromptAmount();
 void DisplayAmount(double);
 void PromptSwipe();
 void PromptPin();
+void DisplayProcessing():
 void DisplayApproved();
 void DisplayDeclined();
 void DisplayGoodbye();

@@ -48,6 +48,21 @@ void PromptPin(){
 	lcd1602WriteString("Enter PIN:");
 }
 
+void DisplayProcessing() {
+	lcd1602Clear();
+	lcd1602SetCursor(0,0);
+	lcd1602WriteString("Processing...");
+	sleep(2);
+	lcd1602SetCursor(0,1);
+	lcd1602WriteString("...");
+	sleep(1);
+	lcd1602SetCursor(5,1);
+	lcd1602WriteString("...");
+	sleep(1);
+	lcd1602SetCursor(10,1);
+	lcd1602WriteString("...");
+}
+
 void DisplayApproved(){
 	lcd1602Clear();
 	lcd1602SetCursor(0,0);
