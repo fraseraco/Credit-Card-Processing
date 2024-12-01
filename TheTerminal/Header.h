@@ -27,6 +27,8 @@ CardInfo Card_Data_Parsing();
 void DisplayMenu(char*);
 void PromptAmount();
 void DisplayAmount(double);
+void PromptSwipe();
+void PromptPin();
 void DisplayGoodbye();
 void CCDump_Name(Card);
 void CCDump(CardInfo);

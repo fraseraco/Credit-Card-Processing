@@ -42,6 +42,7 @@ int main(){
 			printerr("Error");
 			return 1;
 		case 0: // Swipe option
+			PromptSwipe();
 			ccInfo = getMagData();
 			break;
 		case 1: // Tap option
@@ -54,7 +55,8 @@ int main(){
 		printf("Something has gone horribly wrong");
 	}
 
-	// Get pin
+	// Get pin()
+	PromptPin();
 	pin = getPin();
 	// pin = 756;
 	// Perform local validations - expiration, checksum

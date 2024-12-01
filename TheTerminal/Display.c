@@ -35,6 +35,19 @@ void DisplayAmount(double amt) {
 	lcd1602Control(1,0,0);  // (backlight, underline, blink block)
 }
 
+void PromptSwipe(){
+	lcd1602Clear();
+	lcd1602WriteString("Swipe now");
+	lcd1602SetCursor(0,1); // (ch pos, row pos) starting at 0,0 for first printable space
+	lcd1602WriteString(">>> >>> >>>");
+	lcd1602Control(1,0,0);  // (backlight, underline, blink block)
+}
+
+void PromptPin(){
+	lcd1602Clear();
+	lcd1602WriteString("Enter PIN:");
+}
+
 void DisplayGoodbye(){
 	lcd1602Clear();
 	lcd1602SetCursor(0,0);
