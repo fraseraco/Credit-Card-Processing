@@ -88,6 +88,13 @@ int main(){
 		DisplayProcessing();
 		sprintf(pinString, "%d", pin);
 		char* res = Curl(ccInfo->cardNumber, ccInfo->cardMonth, ccInfo->cardYear, pinString, transactionAmount);
+		if (strstr(res, "Approved")) {
+			printf("Transaction Approved\n");
+			DisplayApproved();
+		} else {
+			printf("Transaction Declined\n");
+			DisplayDeclined();
+		}
 	} else {
 		printf("Transaction Declined\n");
 		DisplayDeclined();
