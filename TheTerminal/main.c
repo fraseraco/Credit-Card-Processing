@@ -10,7 +10,7 @@
 #else
 #define TESTMODE LCD		// Allows testing of LCD
 #define READMODE 9
-#define DisplayMenu printf
+// #define DisplayMenu printf
 #define CCDump CCDump_DEBUG
 #endif
 #define printerr printf
