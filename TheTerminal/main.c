@@ -29,13 +29,13 @@ int main(){
 	transactionAmount = getAmount();
 
 	DisplayAmount(transactionAmount);
-	
+
 	//DisplayMenu("0. Swipe Card \t1. Tap to pay \t2. Test \t9. Dev\n");
 	
 	// printf("Press Enter to continue\n");
 	// getchar();
 	
-	switch ( 1 ) {
+	switch ( 0 ) {
 		case -1: 
 			printerr("Error");
 			return 1;
