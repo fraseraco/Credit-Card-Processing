@@ -82,6 +82,7 @@ int main(){
 	}
 	else {
 		printf("Transaction Declined\n");
+		DisplayDeclined();
 	}
 	
 
