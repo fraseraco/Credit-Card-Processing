@@ -41,7 +41,7 @@ CardInfo getMagData() {
     //printf("Please swipe your card:\n");
 
 	//FLUSH BUFFER
-	while (getchar() != EOF);
+	while (getchar() != '\n');
     if (fgets(card, sizeof(card), stdin) != NULL) {
       //printf("Card data: %s\n", card);
       
