@@ -23,14 +23,15 @@ void PromptAmount() {
 		lcd1602Control(1,0,0);  // (backlight, underline, blink block)
 }
 
-void DisplayAmount(int amt) {
+void DisplayAmount(double amt) {
 	char buff[17];
-	sprintf(buff, "%d", amt);
+	sprintf(buff, "$%.2lf", amt);
 	lcd1602Clear();
 	lcd1602SetCursor(0,0);
-	lcd1602WriteString("Amount Correct?");
+	lcd1602WriteString("Amount: ");
 	lcd1602SetCursor(0,1); // (ch pos, row pos) starting at 0,0 for first printable space
 	lcd1602WriteString(buff);
+	sleep(2);
 	lcd1602Control(1,0,0);  // (backlight, underline, blink block)
 }
 
