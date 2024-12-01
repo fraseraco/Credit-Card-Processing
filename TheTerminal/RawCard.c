@@ -42,6 +42,7 @@ CardInfo getMagData() {
 
 	//FLUSH BUFFER
 	while (getchar() != '\n');
+	printf("Right before fgets");
     if (fgets(card, sizeof(card), stdin) != NULL) {
       //printf("Card data: %s\n", card);
       
