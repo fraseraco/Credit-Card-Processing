@@ -34,8 +34,8 @@ int main(){
 	
 	//DisplayMenu("0. Swipe Card \t1. Tap to pay \t2. Test \t9. Dev\n");
 	
-	printf("Press Enter to continue\n");
-	getchar();
+	// printf("Press Enter to continue\n");
+	// getchar();
 	
 	switch ( 9 ) {
 		case -1: 
