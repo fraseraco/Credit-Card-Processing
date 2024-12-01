@@ -58,7 +58,7 @@ void DisplayProcessing() {
 	lcd1602Clear();
 	lcd1602SetCursor(0,0);
 	lcd1602WriteString("Processing...");
-	sleep(1);
+	// sleep(1);
 	lcd1602SetCursor(0,1);
 	lcd1602WriteString("...");
 }
