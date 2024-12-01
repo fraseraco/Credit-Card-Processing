@@ -148,7 +148,7 @@ CardInfo getMagData() {
     else{
       printf("Processing...\n");
     }  
-  return CreateCardInfo(cardNumber, cardYear, cardMonth, firstName, middle, lastName);
+  return CreateCardInfo(cardNumber, year, month, firstName, middle, lastName);
 
 }
 
