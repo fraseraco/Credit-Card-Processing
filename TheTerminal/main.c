@@ -20,8 +20,12 @@
 int main(){
 
 	int ReadMode, pin = 0000;
+	double transactionAmount = 0.0;
 	Card CC_test = {"4242424242424242", "2025", "03", "Bob", "L", "Oblaw"};
 	CardInfo ccInfo;
+
+	transactionAmount = getAmount();
+
 
 	if (lcd1602Init(1, 0x27)) { printf("Error Initializing LCD\n\n"); return 0; }
 	DisplayMenu("0. Swipe Card \t1. Tap to pay \t2. Test \t9. Dev\n");
@@ -41,13 +45,14 @@ int main(){
 			break;
 		case 9: // Test/Dev option
 			ccInfo = &CC_test;
-			pin = 756;
 			break;
 		default:
 		printf("Something has gone horribly wrong");
 	}
 
 	// Get pin
+	pin = getPin();
+	// pin = 756;
 	// Perform local validations - expiration, checksum
 	
 
@@ -59,7 +64,7 @@ int main(){
 	// Process response
 	char pinString[5];
 	sprintf(pinString, "%d", pin);
-	char* res = Curl(ccInfo->cardNumber, ccInfo->cardMonth, ccInfo->cardYear, pinString, 5.5);
+	char* res = Curl(ccInfo->cardNumber, ccInfo->cardMonth, ccInfo->cardYear, pinString, transactionAmount);
 
 	if (res == NULL) {
 		printf("ERROR: server response NULL");
@@ -71,7 +76,7 @@ int main(){
 	else {
 		printf("Transaction Declined\n");
 	}
-
+	
 
 	DisplayGoodbye();
 	Cleanup();
