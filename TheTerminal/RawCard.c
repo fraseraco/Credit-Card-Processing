@@ -24,8 +24,8 @@ CardInfo getMagData() {
     char *nameString;
     char *nameToken;
     
-    int cardYear = 0;
-    int cardMonth = 0;
+    int cardYear;
+    int cardMonth;
     int currentYear; 
     int currentMonth;
     struct tm* ptr;
@@ -40,7 +40,8 @@ CardInfo getMagData() {
     
     //printf("Please swipe your card:\n");
 
-    
+	//FLUSH BUFFER
+	while (getchar() != EOF);
     if (fgets(card, sizeof(card), stdin) != NULL) {
       //printf("Card data: %s\n", card);
       
