@@ -80,7 +80,7 @@ int main(){
 		printf("Transaction Approved\n");
 		DisplayApproved();
 	}
-	else if (strstr(res, "Pin")) {
+	else if (strstr(res, "PIN")) {
 		printf("Invalid pin\n");
 		DisplayInvalidPin();
 		PromptPin();
