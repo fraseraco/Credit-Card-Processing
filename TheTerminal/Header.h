@@ -30,6 +30,7 @@ void DisplayAmount(double);
 void PromptSwipe();
 void PromptPin();
 void DisplayApproved();
+void DisplayDeclined();
 void DisplayGoodbye();
 void CCDump_Name(Card);
 void CCDump(CardInfo);

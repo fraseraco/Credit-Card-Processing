@@ -55,7 +55,7 @@ void DisplayApproved(){
 	sleep(2);
 }
 
-void DisplayApproved(){
+void DisplayDeclined(){
 	lcd1602Clear();
 	lcd1602SetCursor(0,0);
 	lcd1602WriteString("Declined...");
