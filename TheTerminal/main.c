@@ -32,9 +32,9 @@ int main(){
 
 
 	
-	DisplayMenu("0. Swipe Card \t1. Tap to pay \t2. Test \t9. Dev\n");
+	//DisplayMenu("0. Swipe Card \t1. Tap to pay \t2. Test \t9. Dev\n");
 	
-	printf("Testing LCD Display.\nPress Enter to continue: ");
+	printf("Press Enter to continue\n");
 	getchar();
 	
 	switch ( 9 ) {
