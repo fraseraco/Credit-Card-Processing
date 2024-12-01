@@ -24,20 +24,18 @@ int main(){
 	Card CC_test = {"4242424242424242", "2025", "03", "Bob", "L", "Oblaw"};
 	CardInfo ccInfo;
 	if (lcd1602Init(1, 0x27)) { printf("Error Initializing LCD\n\n"); return 0; }
-	
+	DisplayWelcome();
 	PromptAmount();
 	transactionAmount = getAmount();
 
 	DisplayAmount(transactionAmount);
-
-
 	
 	//DisplayMenu("0. Swipe Card \t1. Tap to pay \t2. Test \t9. Dev\n");
 	
 	// printf("Press Enter to continue\n");
 	// getchar();
 	
-	switch ( 9 ) {
+	switch ( 1 ) {
 		case -1: 
 			printerr("Error");
 			return 1;

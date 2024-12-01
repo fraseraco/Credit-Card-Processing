@@ -3,6 +3,12 @@
 #include <stdint.h>
 #include "Header.h"
 
+void DisplayWelcome() {
+		lcd1602Clear();
+		lcd1602WriteString("Hello");
+		sleep(2);
+		lcd1602Clear();
+}
 
 // Display menu uses the lcd1602.h driver library
 // Below shows basic functions to write to the LCD display
