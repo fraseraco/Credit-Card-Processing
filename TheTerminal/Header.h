@@ -45,4 +45,4 @@ char *trim_whitespace(char *str);
 int Cleanup();
 
 /* Server request */
-char* Curl (char cardNumber[17], char month[3], char year[5], char pin[5], double transaction);
+char* Curl (char*, char*, char*, char*, double transaction);

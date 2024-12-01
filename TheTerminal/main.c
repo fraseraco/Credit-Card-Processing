@@ -75,7 +75,7 @@ int main(){
 	else {
 		printf("Transaction Declined\n");
 	}
-
+	
 
 	DisplayGoodbye();
 	Cleanup();
