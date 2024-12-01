@@ -25,6 +25,7 @@ CardInfo Card_Data_Parsing();
 
 /* * * * Display.c * * * */
 void DisplayMenu(char*);
+void DisplayAmount(int);
 void DisplayGoodbye();
 void CCDump_Name(Card);
 void CCDump(CardInfo);
@@ -39,6 +40,8 @@ CardInfo getRFIDData();
 
 
 /* * * * Utility.c * * * */
+int getAmount();
+int getPin();
 char *trim_whitespace(char *str);
 int Cleanup();
 

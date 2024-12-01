@@ -26,6 +26,8 @@ int main(){
 
 	transactionAmount = getAmount();
 
+	DisplayAmount(transactionAmount);
+
 
 	if (lcd1602Init(1, 0x27)) { printf("Error Initializing LCD\n\n"); return 0; }
 	DisplayMenu("0. Swipe Card \t1. Tap to pay \t2. Test \t9. Dev\n");
@@ -33,7 +35,7 @@ int main(){
 	printf("Testing LCD Display.\nPress Enter to continue: ");
 	getchar();
 	
-	switch ( READMODE ) {
+	switch ( 9 ) {
 		case -1: 
 			printerr("Error");
 			return 1;

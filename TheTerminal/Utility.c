@@ -1,5 +1,18 @@
 #include "Header.h"
 
+int getAmount(){
+    int amt;
+    printf("Enter transaction amount: ");
+    scanf("%d", &amt);
+    return amt;
+}
+int getPin() {
+    int pin;
+    printf("Enter pin: ");
+    scanf("%d", &pin);
+    return pin;
+}
+
 char *trim_whitespace(char *str) {
     char *end;
 

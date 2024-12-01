@@ -15,6 +15,16 @@ void DisplayMenu(char * str) {
 		lcd1602Control(1,0,1);  // (backlight, underline, blink block)
 }
 
+void DisplayAmount(int amt) {
+	char buff[17];
+	sprintf(buff, "%d", amt);
+	lcd1602Clear();
+	lcd1602WriteString("Amount Correct?");
+	lcd1602SetCursor(0,1); // (ch pos, row pos) starting at 0,0 for first printable space
+	lcd1602WriteString(buff);
+	lcd1602Control(1,0,1);  // (backlight, underline, blink block)
+}
+
 void DisplayGoodbye(){
 	lcd1602Clear();
 	lcd1602SetCursor(0,0);
