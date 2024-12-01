@@ -47,12 +47,12 @@ int main() {
     t = time(NULL);
     ptr = localtime(&t);
     //print for debuggingCardInfo cardInfo;
-    printf("%s", asctime(ptr));
+    //printf("%s", asctime(ptr));
 
     currentYear = ptr->tm_year + 1900;
     currentMonth = ptr->tm_mon + 1;
     
-    printf("Please swipe your card:\n");
+    //printf("Please swipe your card:\n");
 
     
     if (fgets(card, sizeof(card), stdin) != NULL) {
@@ -72,8 +72,8 @@ int main() {
                cardNumber[i-2] = tempNum[i];
                  }
               cardNumber[strlen(tempNum) - 2] = '\0';
-              printf("Card Number: %s\n", cardNumber);
-              cardInfo->cardNumber = cardNumber;
+             //printf("Card Number: %s\n", cardNumber);
+             
             }
             
           else if ( flag == 1 ){
@@ -89,8 +89,8 @@ int main() {
              
               lastName = nameString; 
                 //print for debugging
-                cardInfo->lastName = lastName;
-                printf("Last Name: %s\n", lastName);
+              
+               // printf("Last Name: %s\n", lastName);
                nameString = strtok(NULL, "/");
                    nameToken = trim_whitespace(nameString);
            
@@ -117,11 +117,10 @@ int main() {
                
                 
                }
-               cardInfo->firstName = firstName;
-               cardInfo->middle = middle;
+              
                 //print for debugging
-                printf("First Name: %s\n", firstName);
-                printf("Middle Name: %s\n", middle);
+                // printf("First Name: %s\n", firstName);
+                // printf("Middle Name: %s\n", middle);
                   
               }
 
@@ -138,11 +137,9 @@ int main() {
             
             cardYear = atoi(year);
             cardMonth = atoi(month);
-            cardInfo->cardYear = cardYear;
-            cardInfo->cardMonth = cardMonth;
-            
-            printf("Month: %d\n", cardMonth);
-            printf("Year: %d\n", cardYear);
+           
+            // printf("Month: %d\n", cardMonth);
+            // printf("Year: %d\n", cardYear);
 
             }
         

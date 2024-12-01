@@ -42,6 +42,8 @@ void CCDump_DEBUG(CardInfo);
 /* * * * RawCard.c * * * */
 int getReadMode();
 CardInfo getMagData();
+CardInfo CreateCardInfo(char*, char*, char*, char*, char*, char*);
+void FreeCard(CardInfo);
 CardInfo getRFIDData();
 
 /* * * * ParseCard.c * * * */

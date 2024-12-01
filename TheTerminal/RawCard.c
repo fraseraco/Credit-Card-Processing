@@ -11,7 +11,6 @@ int getReadMode(){
 }
 
 CardInfo getMagData() {
-    CardInfo cardInfo = malloc(sizeof(Card));
     char card[256] = "";
     char *token;
     char cardNumber[16];
@@ -34,16 +33,16 @@ CardInfo getMagData() {
     t = time(NULL);
     ptr = localtime(&t);
     //print for debuggingCardInfo cardInfo;
-    printf("%s", asctime(ptr));
+    //printf("%s", asctime(ptr));
 
     currentYear = ptr->tm_year + 1900;
     currentMonth = ptr->tm_mon + 1;
     
-    printf("Please swipe your card:\n");
+    //printf("Please swipe your card:\n");
 
     
     if (fgets(card, sizeof(card), stdin) != NULL) {
-      //  printf("Card data: %s\n", card);
+      //printf("Card data: %s\n", card);
       
         token = strtok_r(card, "^",&saveptr);
         
@@ -59,8 +58,8 @@ CardInfo getMagData() {
                cardNumber[i-2] = tempNum[i];
                  }
               cardNumber[strlen(tempNum) - 2] = '\0';
-              printf("Card Number: %s\n", cardNumber);
-              cardInfo->cardNumber = cardNumber;
+              //printf("Card Number: %s\n", cardNumber);
+              
             }
             
           else if ( flag == 1 ){
@@ -76,10 +75,10 @@ CardInfo getMagData() {
              
               lastName = nameString; 
                 //print for debugging
-                cardInfo->lastName = lastName;
-                printf("Last Name: %s\n", lastName);
+               
+                //printf("Last Name: %s\n", lastName);
                nameString = strtok(NULL, "/");
-                   nameToken = trim_whitespace(nameString);
+               nameToken = trim_whitespace(nameString);
            
             for ( int i = 0; i < strlen(nameToken) - 1; i ++){
               
@@ -104,11 +103,10 @@ CardInfo getMagData() {
                
                 
                }
-               cardInfo->firstName = firstName;
-               cardInfo->middle = middle;
+             
                 //print for debugging
-                printf("First Name: %s\n", firstName);
-                printf("Middle Name: %s\n", middle);
+                //printf("First Name: %s\n", firstName);
+                //printf("Middle Name: %s\n", middle);
                   
               }
 
@@ -125,11 +123,9 @@ CardInfo getMagData() {
             
             cardYear = atoi(year);
             cardMonth = atoi(month);
-            cardInfo->cardYear = cardYear;
-            cardInfo->cardMonth = cardMonth;
-            
-            printf("Month: %d\n", cardMonth);
-            printf("Year: %d\n", cardYear);
+          
+          //printf("Month: %d\n", cardMonth);
+          //printf("Year: %d\n", cardYear);
 
             }
         
@@ -140,7 +136,7 @@ CardInfo getMagData() {
         }  
     
     else {
-        printf("Failed to read card data.\n");
+      printf("Failed to read card data.\n");
     }
 
     if ( cardYear < currentYear ){
@@ -151,13 +147,31 @@ CardInfo getMagData() {
      }
     else{
       printf("Processing...\n");
-    }
+    }  
+  return CreateCardInfo(cardNumber, cardYear, cardMonth, firstName, middle, lastName);
+
+}
+
+CardInfo CreateCardInfo(char* number, char* year, char* month, char* fName, char* mid, char* lName) {
+    CardInfo cardInfo = malloc(sizeof(Card));
+    cardInfo->cardNumber = malloc(sizeof(char) * ( strlen(number) + 1));
+    cardInfo->cardYear = malloc(sizeof(char) * 5);
+    cardInfo->cardMonth = malloc(sizeof(char) * 3);
+    cardInfo->firstName = malloc(sizeof(char) * (strlen(fName) +1));
+    cardInfo->middle = malloc(sizeof(char) * (strlen(mid)+1));
+    cardInfo->lastName = malloc(sizeof(char) * (strlen(lName)+1));
     
+    return cardInfo;
+}
 
-
-  
-  return cardInfo;
-
+void FreeCard(CardInfo cc) {
+	free(cc->cardNumber);
+	free(cc->cardYear);
+	free(cc->cardMonth);
+	free(cc->firstName);
+	free(cc->middle);
+	free(cc->lastName);
+	free(cc);
 }
 
 CardInfo getRFIDData()

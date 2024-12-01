@@ -97,6 +97,7 @@ int main(){
 		printf("Transaction Declined\n");
 		DisplayDeclined();
 	}
+	FreeCard(ccInfo); 
 
 	DisplayGoodbye();
 	Cleanup();
