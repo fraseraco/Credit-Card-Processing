@@ -54,13 +54,13 @@ int main(){
 		default:
 		printf("Something has gone horribly wrong");
 	}
-
 	// Get pin()
 	PromptPin();
 	pin = getPin();
 	// pin = 756;
 	// Perform local validations - expiration, checksum
 	
+	DisplayProcessing();
 
 	// dump CC info to LCD
 	CCDump(ccInfo);
